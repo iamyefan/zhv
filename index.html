@@ -5,33 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>张伟 - WEB前端开发简历</title>
   <meta name="description" content="张伟，WEB前端开发，9年经验，本科，现居青岛。熟悉 Vue、uniapp、小程序、React、Node.js、Element UI、Vant、uView 等。">
-  <link rel="preload" as="image" href="assets/page-1.png">
   <style>
     :root {
       color-scheme: light;
-      --bg: #f3f6f8;
-      --paper: #ffffff;
-      --ink: #1d2630;
-      --muted: #637083;
-      --line: #d6dee8;
+      --bg: #f3f6fb;
+      --paper: rgba(255, 255, 255, 0.88);
+      --ink: #172033;
+      --muted: #64748b;
+      --line: rgba(148, 163, 184, 0.28);
       --accent: #2563eb;
+      --accent-2: #0ea5e9;
+      --accent-3: #6366f1;
       --accent-dark: #1d4ed8;
       --glow: rgba(37, 99, 235, 0.22);
-      --shadow: 0 16px 42px rgba(29, 38, 48, 0.14);
-      --shadow-active: 0 26px 70px rgba(29, 38, 48, 0.2);
+      --shadow: 0 18px 48px rgba(15, 23, 42, 0.12);
+      --shadow-active: 0 28px 78px rgba(37, 99, 235, 0.18);
     }
 
     * { box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
       min-width: 320px;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
-      line-height: 1.65;
+      line-height: 1.72;
       color: var(--ink);
       background: var(--bg);
     }
@@ -43,9 +42,10 @@
       z-index: -1;
       pointer-events: none;
       background:
-        linear-gradient(115deg, rgba(37, 99, 235, 0.08), transparent 34%),
-        linear-gradient(245deg, rgba(14, 165, 233, 0.07), transparent 38%),
-        repeating-linear-gradient(90deg, rgba(29, 38, 48, 0.035) 0 1px, transparent 1px 64px);
+        radial-gradient(circle at 16% 10%, rgba(37, 99, 235, 0.12), transparent 30%),
+        radial-gradient(circle at 86% 12%, rgba(14, 165, 233, 0.12), transparent 28%),
+        linear-gradient(115deg, rgba(37, 99, 235, 0.06), transparent 34%),
+        repeating-linear-gradient(90deg, rgba(15, 23, 42, 0.035) 0 1px, transparent 1px 64px);
       animation: stageShift 16s ease-in-out infinite alternate;
     }
 
@@ -58,7 +58,7 @@
       height: 3px;
       transform-origin: left center;
       transform: scaleX(0);
-      background: linear-gradient(90deg, #2563eb, #0ea5e9, #6366f1);
+      background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--accent-3));
       box-shadow: 0 0 18px var(--glow);
     }
 
@@ -66,9 +66,9 @@
       position: sticky;
       top: 0;
       z-index: 10;
-      border-bottom: 1px solid rgba(214, 222, 232, 0.88);
-      background: rgba(255, 255, 255, 0.94);
-      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.86);
+      backdrop-filter: blur(16px);
       animation: slideDown 520ms ease-out both;
     }
 
@@ -84,12 +84,9 @@
 
     .identity { min-width: 0; }
 
-    h1 {
-      margin: 0;
-      font-size: 19px;
-      line-height: 1.2;
-      letter-spacing: 0;
-    }
+    h1, h2, h3 { margin: 0; letter-spacing: 0; }
+
+    h1 { font-size: 19px; line-height: 1.2; }
 
     .subtitle {
       margin: 2px 0 0;
@@ -100,13 +97,7 @@
       text-overflow: ellipsis;
     }
 
-    .actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
+    .actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
 
     .button {
       position: relative;
@@ -116,12 +107,12 @@
       min-height: 36px;
       padding: 0 14px;
       border: 1px solid var(--line);
-      border-radius: 6px;
+      border-radius: 8px;
       color: var(--ink);
       background: #fff;
       text-decoration: none;
       font-size: 13px;
-      font-weight: 600;
+      font-weight: 650;
       white-space: nowrap;
       font-family: inherit;
       cursor: pointer;
@@ -134,91 +125,143 @@
       position: absolute;
       inset: 0;
       transform: translateX(-120%) skewX(-18deg);
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.58), transparent);
       transition: transform 520ms ease;
     }
 
-    .button.primary {
-      border-color: var(--accent);
-      background: var(--accent);
-      color: #fff;
-    }
-
-    .button:hover {
-      border-color: var(--accent);
-      color: var(--accent-dark);
-      transform: translateY(-1px);
-      box-shadow: 0 8px 20px rgba(29, 38, 48, 0.12);
-    }
-
-    .button:hover::after {
-      transform: translateX(120%) skewX(-18deg);
-    }
-
-    .button.primary:hover {
-      color: #fff;
-      background: var(--accent-dark);
-    }
+    .button.primary { border-color: var(--accent); background: var(--accent); color: #fff; }
+    .button:hover { border-color: var(--accent); color: var(--accent-dark); transform: translateY(-1px); box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12); }
+    .button:hover::after { transform: translateX(120%) skewX(-18deg); }
+    .button.primary:hover { color: #fff; background: var(--accent-dark); }
 
     main {
       width: min(1120px, calc(100% - 32px));
-      margin: 24px auto 52px;
-    }
-
-    .resume-view {
+      margin: 28px auto 64px;
       display: grid;
       gap: 22px;
-      justify-items: center;
     }
 
-    .resume-page {
+    .hero {
       position: relative;
-      width: min(100%, 840px);
-      margin: 0;
-      background: var(--paper);
-      border: 1px solid rgba(214, 222, 232, 0.92);
+      overflow: hidden;
+      padding: 42px 44px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.72));
       box-shadow: var(--shadow);
       opacity: 0;
       transform: translateY(28px) scale(0.985);
       transition: opacity 620ms ease, transform 620ms ease, box-shadow 220ms ease;
-      will-change: transform, opacity;
     }
 
-    .resume-page::before {
+    .hero::before,
+    .panel::before {
       content: "";
       position: absolute;
       inset: 0;
-      z-index: 1;
+      z-index: 0;
       pointer-events: none;
       opacity: 0;
-      background: linear-gradient(115deg, transparent 8%, rgba(255, 255, 255, 0.42) 42%, transparent 58%);
+      background: linear-gradient(115deg, transparent 8%, rgba(255, 255, 255, 0.52) 42%, transparent 58%);
       transform: translateX(-120%);
       transition: opacity 220ms ease, transform 900ms ease;
     }
 
-    .resume-page.is-active {
-      box-shadow: var(--shadow-active);
+    .hero:hover::before,
+    .panel:hover::before { opacity: 1; transform: translateX(120%); }
+
+    .hero > *, .panel > * { position: relative; z-index: 1; }
+
+    .name-row { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 18px; }
+    .name { font-size: clamp(36px, 6vw, 64px); line-height: 1; font-weight: 760; }
+    .role { color: var(--accent); font-size: 18px; font-weight: 760; }
+    .tagline { max-width: 680px; margin: 0 0 22px; color: #334155; font-size: 17px; }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 20px;
     }
 
-    .resume-page.is-visible {
-      opacity: 1;
-      transform: translateY(0) scale(1);
+    .meta-item {
+      padding: 13px 14px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.7);
     }
 
-    .resume-page:hover {
-      transform: translateY(-3px) scale(1.002);
-      box-shadow: 0 22px 58px rgba(29, 38, 48, 0.18);
+    .meta-label { display: block; color: var(--muted); font-size: 12px; }
+    .meta-value { display: block; margin-top: 2px; font-weight: 700; }
+
+    .panel {
+      position: relative;
+      overflow: hidden;
+      padding: 30px 34px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+      opacity: 0;
+      transform: translateY(28px) scale(0.985);
+      transition: opacity 620ms ease, transform 620ms ease, box-shadow 220ms ease;
+      scroll-margin-top: 82px;
     }
 
-    .resume-page:hover::before {
-      opacity: 1;
-      transform: translateX(120%);
+    .panel.is-visible,
+    .hero.is-visible { opacity: 1; transform: translateY(0) scale(1); }
+    .panel.is-active,
+    .hero.is-active { box-shadow: var(--shadow-active); }
+    .panel:hover,
+    .hero:hover { transform: translateY(-3px) scale(1.002); }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      font-size: 23px;
     }
 
-    .resume-page img {
-      display: block;
-      width: 100%;
-      height: auto;
+    .section-title::before {
+      content: "";
+      width: 10px;
+      height: 28px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, var(--accent), var(--accent-2));
+      box-shadow: 0 0 20px var(--glow);
+    }
+
+    .timeline { display: grid; gap: 16px; }
+    .job, .project, .school { display: grid; grid-template-columns: 148px 1fr; gap: 18px; padding-top: 16px; border-top: 1px solid var(--line); }
+    .job:first-child, .project:first-child, .school:first-child { padding-top: 0; border-top: 0; }
+    .time { color: var(--accent-dark); font-weight: 750; }
+    .item-head { display: flex; justify-content: space-between; gap: 16px; margin-bottom: 8px; }
+    .item-title { font-size: 18px; font-weight: 780; }
+    .item-role { color: var(--muted); font-weight: 700; white-space: nowrap; }
+    .project p, .job p, .school p { margin: 0 0 8px; }
+
+    .label { color: var(--accent-dark); font-weight: 760; }
+    ul { margin: 8px 0 0; padding-left: 1.2em; }
+    li { margin: 4px 0; }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .skills li {
+      margin: 0;
+      padding: 8px 12px;
+      border: 1px solid rgba(37, 99, 235, 0.18);
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.08);
+      color: #1e3a8a;
+      font-weight: 650;
     }
 
     .page-rail {
@@ -229,31 +272,16 @@
       display: grid;
       gap: 10px;
       padding: 10px 8px;
-      border: 1px solid rgba(214, 222, 232, 0.82);
+      border: 1px solid var(--line);
       border-radius: 999px;
       background: rgba(255, 255, 255, 0.78);
-      box-shadow: 0 14px 34px rgba(29, 38, 48, 0.12);
+      box-shadow: 0 14px 34px rgba(15, 23, 42, 0.12);
       backdrop-filter: blur(12px);
       transform: translateY(-50%);
     }
 
-    .page-dot {
-      width: 8px;
-      height: 8px;
-      padding: 0;
-      border: 0;
-      border-radius: 999px;
-      background: #a8b3c2;
-      cursor: pointer;
-      transition: height 180ms ease, background 180ms ease, transform 180ms ease;
-    }
-
-    .page-dot:hover,
-    .page-dot.is-active {
-      height: 22px;
-      background: var(--accent);
-      transform: scale(1.05);
-    }
+    .page-dot { width: 8px; height: 8px; padding: 0; border: 0; border-radius: 999px; background: #a8b3c2; cursor: pointer; transition: height 180ms ease, background 180ms ease, transform 180ms ease; }
+    .page-dot:hover, .page-dot.is-active { height: 22px; background: var(--accent); transform: scale(1.05); }
 
     .back-top {
       position: fixed;
@@ -274,120 +302,37 @@
       transition: opacity 180ms ease, transform 180ms ease, background 160ms ease;
     }
 
-    .back-top.is-visible {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateY(0) scale(1);
-    }
+    .back-top.is-visible { opacity: 1; pointer-events: auto; transform: translateY(0) scale(1); }
+    .back-top:hover { background: var(--accent-dark); transform: translateY(-2px) scale(1.03); }
+    .back-top::before { content: ""; display: block; width: 11px; height: 11px; margin: 17px auto 0; border-top: 2px solid currentColor; border-left: 2px solid currentColor; transform: rotate(45deg); }
 
-    .back-top:hover {
-      background: var(--accent-dark);
-      transform: translateY(-2px) scale(1.03);
-    }
+    @keyframes slideDown { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes stageShift { from { background-position: 0 0, 0 0, 0 0, 0 0; } to { background-position: 80px 0, -60px 40px, 80px 0, 64px 0; } }
 
-    .back-top::before {
-      content: "";
-      display: block;
-      width: 11px;
-      height: 11px;
-      margin: 17px auto 0;
-      border-top: 2px solid currentColor;
-      border-left: 2px solid currentColor;
-      transform: rotate(45deg);
-    }
-
-    @keyframes slideDown {
-      from {
-        opacity: 0;
-        transform: translateY(-12px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes stageShift {
-      from { background-position: 0 0, 0 0, 0 0; }
-      to { background-position: 80px 0, -60px 40px, 64px 0; }
-    }
-
-    @media (max-width: 720px) {
-      .topbar-inner {
-        width: min(100% - 20px, 1120px);
-        align-items: flex-start;
-        flex-direction: column;
-        padding: 12px 0;
-        gap: 10px;
-      }
-
-      .actions {
-        width: 100%;
-        justify-content: flex-start;
-      }
-
-      .button {
-        min-height: 34px;
-        padding: 0 12px;
-        font-size: 13px;
-      }
-
-      main { width: 100%; margin-top: 0; }
-
-      .resume-view { gap: 10px; }
-      .resume-page {
-        width: 100%;
-        border-right: 0;
-        border-left: 0;
-        box-shadow: none;
-      }
-
-      .resume-page:hover {
-        transform: translateY(0) scale(1);
-        box-shadow: none;
-      }
-
-      .resume-page.is-active {
-        box-shadow: none;
-      }
-
-      .resume-page::before,
-      .page-rail {
-        display: none;
-      }
-
-      .back-top {
-        right: 14px;
-        bottom: 14px;
-      }
+    @media (max-width: 820px) {
+      .topbar-inner { width: min(100% - 20px, 1120px); align-items: flex-start; flex-direction: column; padding: 12px 0; gap: 10px; }
+      .actions { width: 100%; justify-content: flex-start; }
+      main { width: min(100% - 20px, 1120px); margin-top: 18px; }
+      .hero, .panel { padding: 24px 18px; border-radius: 14px; }
+      .name-row, .item-head { display: block; }
+      .role, .item-role { display: block; margin-top: 6px; }
+      .meta-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .job, .project, .school { grid-template-columns: 1fr; gap: 6px; }
+      .page-rail { display: none; }
     }
 
     @media print {
       body { background: #fff; }
       body::before, .progress, .topbar, .back-top, .page-rail { display: none; }
-      main { width: 100%; margin: 0; }
-      .resume-view { display: block; }
-      .resume-page {
-        opacity: 1;
-        transform: none;
-        width: 100%;
-        border: 0;
-        box-shadow: none;
-        page-break-after: always;
-        break-after: page;
-      }
+      main { width: 100%; margin: 0; display: block; }
+      .hero, .panel { opacity: 1; transform: none; box-shadow: none; border: 0; border-radius: 0; break-inside: avoid; page-break-inside: avoid; padding: 18px 0; }
     }
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       body::before, .topbar { animation: none; }
-      .resume-page, .button, .back-top {
-        transition: none;
-      }
-      .resume-page {
-        opacity: 1;
-        transform: none;
-      }
+      .hero, .panel, .button, .back-top { transition: none; }
+      .hero, .panel { opacity: 1; transform: none; }
     }
   </style>
 </head>
@@ -405,29 +350,107 @@
       </nav>
     </div>
   </header>
+
   <main>
-    <section class="resume-view" aria-label="简历页面">
-        <figure class="resume-page"><img src="assets/page-1.png" width="1488" height="2105" alt="张伟前端开发简历第 1 页" loading="eager" decoding="async" fetchpriority="high"></figure>
-        <figure class="resume-page"><img src="assets/page-2.png" width="1488" height="2105" alt="张伟前端开发简历第 2 页" loading="lazy" decoding="async"></figure>
-        <figure class="resume-page"><img src="assets/page-3.png" width="1488" height="2105" alt="张伟前端开发简历第 3 页" loading="lazy" decoding="async"></figure>
-        <figure class="resume-page"><img src="assets/page-4.png" width="1488" height="2105" alt="张伟前端开发简历第 4 页" loading="lazy" decoding="async"></figure>
-        <figure class="resume-page"><img src="assets/page-5.png" width="1488" height="2105" alt="张伟前端开发简历第 5 页" loading="lazy" decoding="async"></figure>
-        <figure class="resume-page"><img src="assets/page-6.png" width="1488" height="2105" alt="张伟前端开发简历第 6 页" loading="lazy" decoding="async"></figure>
+    <section class="hero resume-section" id="profile">
+      <div class="name-row">
+        <div>
+          <h2 class="name">张伟</h2>
+          <p class="tagline">态度决定一切，给我一个机会，我会给你一个大大的惊喜。</p>
+        </div>
+        <div class="role">WEB前端开发</div>
+      </div>
+      <div class="meta-grid">
+        <div class="meta-item"><span class="meta-label">基本信息</span><span class="meta-value">男 / 33岁 / 已婚</span></div>
+        <div class="meta-item"><span class="meta-label">学历经验</span><span class="meta-value">本科 / 9年经验</span></div>
+        <div class="meta-item"><span class="meta-label">联系方式</span><span class="meta-value">17685472913</span></div>
+        <div class="meta-item"><span class="meta-label">邮箱</span><span class="meta-value">zhv0831@163.com</span></div>
+        <div class="meta-item"><span class="meta-label">现居城市</span><span class="meta-value">青岛</span></div>
+        <div class="meta-item"><span class="meta-label">期望薪资</span><span class="meta-value">面议</span></div>
+        <div class="meta-item"><span class="meta-label">到岗时间</span><span class="meta-value">一周内到岗</span></div>
+        <div class="meta-item"><span class="meta-label">求职方向</span><span class="meta-value">WEB前端</span></div>
+      </div>
+    </section>
+
+    <section class="panel resume-section" id="work">
+      <h2 class="section-title">工作经验</h2>
+      <div class="timeline">
+        <article class="job"><div class="time">2023.05 - 至今</div><div><div class="item-head"><h3 class="item-title">青岛微星软件</h3><span class="item-role">web前端 + app开发</span></div></div></article>
+        <article class="job"><div class="time">2021.03 - 2023.04</div><div><div class="item-head"><h3 class="item-title">北京希风开发科技有限公司</h3><span class="item-role">WEB前端</span></div></div></article>
+        <article class="job"><div class="time">2019.03 - 2021.02</div><div><div class="item-head"><h3 class="item-title">北京海城源科技有限公司</h3><span class="item-role">WEB前端</span></div></div></article>
+        <article class="job"><div class="time">2016.12 - 2018.12</div><div><div class="item-head"><h3 class="item-title">上海子希科技有限公司</h3><span class="item-role">WEB前端</span></div></div></article>
+      </div>
+      <ul>
+        <li>根据 UI 设计稿实现需求页面，与产品、UI 探讨页面交互并优化用户体验。</li>
+        <li>解决日常项目 BUG，优化已有项目代码，保证代码规范统一。</li>
+        <li>参与新项目需求评审，落实技术可行性，负责框架搭建、技术选型和排期规划。</li>
+        <li>能够快速接手维护已有项目，具备项目从 0 到 1 的开发能力。</li>
+      </ul>
+    </section>
+
+    <section class="panel resume-section" id="recent-projects">
+      <h2 class="section-title">近期项目</h2>
+      <div class="timeline">
+        <article class="project"><div class="time">2024.10 - 至今</div><div><div class="item-head"><h3 class="item-title">BetPay内嵌版 + H5版</h3><span class="item-role">web前端</span></div><p><span class="label">项目介绍：</span>随着业务发展，BetPay 推出内嵌版供第三方接入使用，H5 版为完整虚拟币交易系统。</p><p><span class="label">技术：</span>Vue2、vue-cli、vue-router、Vant UI、MQTT、Firebase、Vue I18n。</p><p><span class="label">职责：</span>负责从 0 到 1 规划构建项目，制定产品逻辑、盘口参数和接口参数。</p><p><span class="label">结果：</span>主要运营在印度、巴基斯坦、孟加拉、菲律宾、巴西等国家，每日订单量过万。</p></div></article>
+        <article class="project"><div class="time">2024.09 - 至今</div><div><div class="item-head"><h3 class="item-title">数码产品租物小程序以及后台管理系统</h3><span class="item-role">web前端</span></div><p><span class="label">项目介绍：</span>以数码产品租赁和买断销售为主，C 端负责用户租赁、买断，B 端包含订单管理、上架管理、报表等。</p><p><span class="label">技术：</span>C 端 uniapp 微信小程序，B 端 React + Ant Design。</p><p><span class="label">职责：</span>临时接手维护小程序页面调整，主要参与 B 端各类报表开发。</p></div></article>
+        <article class="project"><div class="time">2023.10 - 至今</div><div><div class="item-head"><h3 class="item-title">微信机器人项目</h3><span class="item-role">负责人</span></div><p><span class="label">项目介绍：</span>业余时间开发的微信群智能回复机器人，包含微信机器人主体 Node 接口、后台管理 UI、游戏接口对接 Node 项目。</p><p><span class="label">技术：</span>Node.js、Express、sqlite3、node-html-to-image、sharp、pm2。</p><p><span class="label">职责：</span>对接微信 hook 框架和各类 API，完善娱乐功能和游戏战报功能，并持续跟进游戏功能。</p><p><span class="label">结果：</span>机器人用户从 2023 年几个群增长到 2025 年 10 月左右稳定 550 个群左右，公众号订阅 900+。</p></div></article>
+        <article class="project"><div class="time">2023.05 - 2024.12</div><div><div class="item-head"><h3 class="item-title">MiPay APP + H5</h3><span class="item-role">web前端</span></div><p><span class="label">项目介绍：</span>虚拟币交易系统，涵盖 H5 和安卓 APP，主要为香港客户使用，包含挂单、买单等完整交易流程。</p><p><span class="label">技术：</span>uniapp、Vue2、SCSS、unipush，多端组件封装。</p><p><span class="label">职责：</span>接手维护项目，开发新功能，打包上传指定平台并配合同事完成 APK 发版。</p><p><span class="label">结果：</span>用户订单成交量每天稳定在 1000 单以上。</p></div></article>
+        <article class="project"><div class="time">2024.04 - 2024.08</div><div><div class="item-head"><h3 class="item-title">BetGo MiniApp项目</h3><span class="item-role">web前端</span></div><p><span class="label">项目介绍：</span>Telegram MiniApp 项目，用于在 Telegram 机器人内自助下单，包含自助充值、提现、汇率查询等。</p><p><span class="label">技术：</span>Telegram SDK、Vue3、Vite、Pinia、TypeScript、Vant4。</p><p><span class="label">职责：</span>负责从 0 搭建项目，配合后端接入 Telegram 机器人。</p></div></article>
+        <article class="project"><div class="time">2023.03 - 2024.08</div><div><div class="item-head"><h3 class="item-title">天星医疗器械项目</h3><span class="item-role">web前端</span></div><p><span class="label">项目介绍：</span>医疗康复系统后台管理，主要为医院骨科使用，包含医院、医生、康复师、病人、康复训练教程及训练数据展示。</p><p><span class="label">技术：</span>若依框架、Vue2、SCSS、vue-router、ECharts。</p><p><span class="label">职责：</span>维护后台管理功能，参与产品设计辅助。</p><p><span class="label">结果：</span>已有数个医院和诊所使用。</p></div></article>
+      </div>
+    </section>
+
+    <section class="panel resume-section" id="mall-projects">
+      <h2 class="section-title">商城与小程序项目</h2>
+      <div class="timeline">
+        <article class="project"><div class="time">2021.03 - 2023.04</div><div><div class="item-head"><h3 class="item-title">希风-榜尚优品 BUYONLIST 小程序</h3><span class="item-role">WEB前端</span></div><p>综合商城小程序，包含商城自营、商家入驻、活动、优惠券、积分、小程序直播、Sass 活动页面等。</p><p><span class="label">技术：</span>uniapp、wx.request、uView UI、微信 JSSDK。</p><p><span class="label">职责：</span>开发需求页面、封装公共请求、优化下单交互、部署埋点、解决 uniapp 动态组件问题，并完成动态 tabbar 配置。</p><p><span class="label">结果：</span>用户 50w+，平时日活 1w+，最高日活 5w+，平均日成交总额 20w 左右，最高日成交额 500w+。</p></div></article>
+        <article class="project"><div class="time">2023.08 - 2024.12</div><div><div class="item-head"><h3 class="item-title">BetPay app</h3><span class="item-role">app开发</span></div><p>虚拟币交易系统，面向玩家使用，包含虚拟币发布、购买流程、积分兑换等体系。</p><p><span class="label">技术：</span>uniapp、Vue2、厂商推送、多语言。</p><p><span class="label">职责：</span>从 0 到 1 开发，负责项目搭建、APK 和 IPA 包配置及上架配合。</p><p><span class="label">结果：</span>主要上架谷歌和苹果商店，运行在巴西、秘鲁、菲律宾等国家。</p></div></article>
+        <article class="project"><div class="time">2021.09 - 2022.12</div><div><div class="item-head"><h3 class="item-title">希风-舞林乐购项目</h3><span class="item-role">web前端</span></div><p>服务中老年广场舞的小程序和后台系统，包含活动宣传、投票、排名、作品详情和电商推广。</p><p><span class="label">技术：</span>uniapp、TypeScript、lPainter、Rapper、Vue CLI、Vuex、avue、Element UI。</p><p><span class="label">职责：</span>维护页面、开发活动页面、绘制海报、处理分享带参、上传图片视频、后台活动配置和作品管理。</p><p><span class="label">结果：</span>用户 50w+，最高新增用户 3w/天，最高日活 7w/天。</p></div></article>
+        <article class="project"><div class="time">2021.03 - 2023.04</div><div><div class="item-head"><h3 class="item-title">希风-兜品MALL综合后台管理系统</h3><span class="item-role">web前端</span></div><p>配合兜品 MALL 小程序的管理后台，包含订单、支付、售后、商品、商户、供应商、活动、系统配置、报表、直播管理等。</p><p><span class="label">技术：</span>Vue CLI、vue-router、Vuex、axios、avue、Element UI、ECharts、qrcode.js。</p><p><span class="label">职责：</span>维护和开发后台页面，完善商品模块，开发活动会场和 Sass 功能，帮助实现 C 端首页配置化。</p><p><span class="label">结果：</span>减少运营和开发成本，丰富多端活动配置能力。</p></div></article>
+        <article class="project"><div class="time">2021.08 - 2022.06</div><div><div class="item-head"><h3 class="item-title">希风-利省生活项目</h3><span class="item-role">web前端</span></div><p>便民生活小程序，包含景区门票、酒店、小区物业、福利购领券分佣、自营商品购买及后台配置系统。</p><p><span class="label">技术：</span>微信原生小程序、Vant Weapp、Vue CLI、Vuex、avue、Element UI。</p><p><span class="label">职责：</span>从 0 到 1 开发，负责项目构建、接口封装、路由定义、组件封装、小程序发布及后台 UI 设定。</p><p><span class="label">结果：</span>项目开发测试完成后交由其他同事维护，用户 2w+。</p></div></article>
+      </div>
+    </section>
+
+    <section class="panel resume-section" id="older-projects">
+      <h2 class="section-title">早期项目</h2>
+      <div class="timeline">
+        <article class="project"><div class="time">2022.08 - 2023.04</div><div><div class="item-head"><h3 class="item-title">希风-直订微信公众号管理系统</h3><span class="item-role">web前端</span></div><p>酒店管理综合项目的公众号管理系统，帮助商家管理自己的公众号。</p><p><span class="label">技术：</span>Vue CLI、Vuex、Element UI、vue-video-player、benz-amr-recorder。</p><p><span class="label">职责：</span>负责草稿箱、微信用户列表、用户标签、群发消息、公众号菜单等模块，并解决音视频在线播放问题。</p><p><span class="label">结果：</span>历时一个月上线，服务 2000+ 酒店。</p></div></article>
+        <article class="project"><div class="time">2019.10 - 2021.03</div><div><div class="item-head"><h3 class="item-title">海城源-保险后台管理系统</h3><span class="item-role">web前端</span></div><p>用于查看推广数据、配置推广渠道、分析导出数据和配置公众号的综合后台。</p><p><span class="label">技术：</span>Vue CLI、vue-router、Vuex、Element UI、axios。</p><p><span class="label">职责：</span>维护已有功能，新增研发页面，优化公共请求参数、表格数据处理方法和动态路由三级嵌套问题。</p><p><span class="label">结果：</span>管理数据 3 千万+。</p></div></article>
+        <article class="project"><div class="time">2019.09 - 2021.03</div><div><div class="item-head"><h3 class="item-title">海城源-保险公众号项目</h3><span class="item-role">web前端</span></div><p>保险公众号项目，涵盖赠险、付费险、养老社区等推广销售。</p><p><span class="label">技术：</span>HTML、CSS、JQuery、原生 JS、Swiper、微信 JS-SDK。</p><p><span class="label">职责：</span>从 0 参与项目，负责公众号菜单页面开发和维护，并参与公共 API 开发。</p><p><span class="label">结果：</span>服务用户 100w+，保单 500w 份+，养老社区预约 2w+。</p></div></article>
+        <article class="project"><div class="time">2019.04 - 2021.03</div><div><div class="item-head"><h3 class="item-title">海城源-保险推广销售 H5 项目</h3><span class="item-role">WEB前端</span></div><p>保险 H5 推广销售项目，投放在百度、支付宝、360、来推啊、怪兽充电等渠道。</p><p><span class="label">技术：</span>HTML、CSS、JQuery、JS、高德地图 API、Swiper、智齿客服。</p><p><span class="label">职责：</span>负责页面新增与维护、公共表单组件封装、动画开发、接口请求封装、适配、渠道 JS 对接和埋点部署。</p><p><span class="label">结果：</span>日均访问量 100w+，线上 bug 几乎为 0。</p></div></article>
+        <article class="project"><div class="time">2017.02 - 2018.12</div><div><div class="item-head"><h3 class="item-title">子希-网页推广项目</h3><span class="item-role">web前端</span></div><p>公司日常销售网页，投放在各大门户网站，也包含淘宝内置页面。</p><p><span class="label">技术：</span>HTML、CSS、JQuery、JS、Ajax。</p><p><span class="label">职责：</span>开发和维护页面样式布局与交互逻辑，配合后端调试支付、表单功能。</p><p><span class="label">结果：</span>月均销售额 100 多万。</p></div></article>
+        <article class="project"><div class="time">2016.12 - 2018.12</div><div><div class="item-head"><h3 class="item-title">子希-ERP管理系统</h3><span class="item-role">web前端</span></div><p>商品 ERP 管理系统，服务售前售后客服，包含商品录入、库存、仓库、人员、发货模板等。</p><p><span class="label">技术：</span>多页面开发、HTML、CSS、JQuery、JS、EasyUI。</p><p><span class="label">职责：</span>实习阶段维护已有页面，开发新页面样式，后期参与逻辑开发。</p><p><span class="label">结果：</span>公司内部使用，员工数量 60 多人。</p></div></article>
+      </div>
+    </section>
+
+    <section class="panel resume-section" id="education-skills">
+      <h2 class="section-title">教育背景与技能</h2>
+      <div class="timeline">
+        <article class="school"><div class="time">2012.09 - 2015.07</div><div><div class="item-head"><h3 class="item-title">上海电子信息职业技术学院</h3><span class="item-role">机电一体化（机器人应用）</span></div></div></article>
+        <article class="school"><div class="time">2019.12 - 2022.12</div><div><div class="item-head"><h3 class="item-title">湖南文理学院</h3><span class="item-role">物联网工程</span></div></div></article>
+      </div>
+      <ul class="skills">
+        <li>HTML/CSS</li><li>JavaScript/ES6</li><li>Vue2</li><li>Vue3</li><li>uniapp</li><li>微信小程序</li><li>React</li><li>TypeScript</li><li>Node.js</li><li>ECharts</li><li>Element UI</li><li>Vant</li><li>uView</li><li>Webpack</li><li>AI 辅助开发</li>
+      </ul>
+      <p>熟练使用 HTML + CSS 布局，熟悉原生 JS、ES6、JQuery 和 DOM 操作；熟练使用 Vue2 全家桶、小程序开发和 uniapp 多平台框架；能够使用 ECharts 完成基础数据报表开发；对 webpack 打包构建有一定认识，能够从 0 到 1 搭建脚手架；了解 Node.js、TS，能够维护 TS/Vue3 项目。</p>
+      <p>工作积极主动，有条理性，适应能力强，具有责任心、独立工作能力和团队合作精神；关注前沿 AI 技术，能够使用 AI 辅助完成复杂的全栈设计。</p>
     </section>
   </main>
+
   <button class="back-top" type="button" aria-label="返回顶部"></button>
-  <nav class="page-rail" aria-label="简历页码导航">
-    <button class="page-dot" type="button" aria-label="第 1 页" data-page="0"></button>
-    <button class="page-dot" type="button" aria-label="第 2 页" data-page="1"></button>
-    <button class="page-dot" type="button" aria-label="第 3 页" data-page="2"></button>
-    <button class="page-dot" type="button" aria-label="第 4 页" data-page="3"></button>
-    <button class="page-dot" type="button" aria-label="第 5 页" data-page="4"></button>
-    <button class="page-dot" type="button" aria-label="第 6 页" data-page="5"></button>
+  <nav class="page-rail" aria-label="简历章节导航">
+    <button class="page-dot" type="button" aria-label="个人信息" data-page="0"></button>
+    <button class="page-dot" type="button" aria-label="工作经验" data-page="1"></button>
+    <button class="page-dot" type="button" aria-label="近期项目" data-page="2"></button>
+    <button class="page-dot" type="button" aria-label="商城项目" data-page="3"></button>
+    <button class="page-dot" type="button" aria-label="早期项目" data-page="4"></button>
+    <button class="page-dot" type="button" aria-label="教育技能" data-page="5"></button>
   </nav>
+
   <script>
     const progress = document.querySelector('.progress');
     const backTop = document.querySelector('.back-top');
-    const pages = document.querySelectorAll('.resume-page');
+    const sections = document.querySelectorAll('.resume-section');
     const dots = document.querySelectorAll('.page-dot');
 
     const updateScrollState = () => {
@@ -438,17 +461,15 @@
 
       let activeIndex = 0;
       let nearestDistance = Number.POSITIVE_INFINITY;
-
-      pages.forEach((page, index) => {
-        const rect = page.getBoundingClientRect();
+      sections.forEach((section, index) => {
+        const rect = section.getBoundingClientRect();
         const distance = Math.abs(rect.top - window.innerHeight * 0.18);
         if (distance < nearestDistance) {
           nearestDistance = distance;
           activeIndex = index;
         }
       });
-
-      pages.forEach((page, index) => page.classList.toggle('is-active', index === activeIndex));
+      sections.forEach((section, index) => section.classList.toggle('is-active', index === activeIndex));
       dots.forEach((dot, index) => dot.classList.toggle('is-active', index === activeIndex));
     };
 
@@ -461,18 +482,15 @@
           }
         });
       }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
-
-      pages.forEach((page) => observer.observe(page));
+      sections.forEach((section) => observer.observe(section));
     } else {
-      pages.forEach((page) => page.classList.add('is-visible'));
+      sections.forEach((section) => section.classList.add('is-visible'));
     }
 
     dots.forEach((dot) => {
       dot.addEventListener('click', () => {
-        const page = pages[Number(dot.dataset.page)];
-        if (page) {
-          page.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+        const section = sections[Number(dot.dataset.page)];
+        if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     });
 
