@@ -3,36 +3,38 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>张伟 - WEB前端开发简历</title>
-  <meta name="description" content="张伟，WEB前端开发，9年经验，本科，现居青岛。熟悉 Vue、uniapp、小程序、React、Node.js、Element UI、Vant、uView 等。">
+  <title>张伟 - web前端简历</title>
+  <meta name="description" content="张伟，web前端，9年经验，本科，青岛。熟悉 vue2、uniapp、微信小程序、vue3、react、nodejs 和 ai 辅助开发。">
   <style>
     :root {
       color-scheme: light;
-      --bg: #f3f6fb;
-      --paper: rgba(255, 255, 255, 0.88);
-      --ink: #172033;
-      --muted: #64748b;
-      --line: rgba(148, 163, 184, 0.28);
-      --accent: #2563eb;
-      --accent-2: #0ea5e9;
-      --accent-3: #6366f1;
-      --accent-dark: #1d4ed8;
-      --glow: rgba(37, 99, 235, 0.22);
-      --shadow: 0 18px 48px rgba(15, 23, 42, 0.12);
-      --shadow-active: 0 28px 78px rgba(37, 99, 235, 0.18);
+      --bg: #eef4ff;
+      --paper: rgba(255, 255, 255, .9);
+      --paper-strong: #fff;
+      --ink: #162033;
+      --muted: #66758f;
+      --line: rgba(83, 104, 138, .18);
+      --blue: #2563eb;
+      --cyan: #06b6d4;
+      --violet: #7c3aed;
+      --soft-blue: rgba(37, 99, 235, .09);
+      --shadow: 0 20px 60px rgba(35, 54, 90, .14);
+      --radius: 16px;
     }
 
     * { box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
       min-width: 320px;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
       line-height: 1.72;
       color: var(--ink);
-      background: var(--bg);
+      background:
+        radial-gradient(circle at 16% 4%, rgba(37, 99, 235, .15), transparent 30%),
+        radial-gradient(circle at 86% 10%, rgba(6, 182, 212, .14), transparent 28%),
+        linear-gradient(180deg, #f8fbff 0%, var(--bg) 48%, #f8fbff 100%);
     }
 
     body::before {
@@ -42,297 +44,447 @@
       z-index: -1;
       pointer-events: none;
       background:
-        radial-gradient(circle at 16% 10%, rgba(37, 99, 235, 0.12), transparent 30%),
-        radial-gradient(circle at 86% 12%, rgba(14, 165, 233, 0.12), transparent 28%),
-        linear-gradient(115deg, rgba(37, 99, 235, 0.06), transparent 34%),
-        repeating-linear-gradient(90deg, rgba(15, 23, 42, 0.035) 0 1px, transparent 1px 64px);
-      animation: stageShift 16s ease-in-out infinite alternate;
+        linear-gradient(rgba(37, 99, 235, .045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37, 99, 235, .045) 1px, transparent 1px);
+      background-size: 58px 58px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,.8), rgba(0,0,0,.08));
+      animation: gridMove 24s linear infinite;
     }
 
     .progress {
       position: fixed;
       top: 0;
       left: 0;
-      z-index: 20;
+      z-index: 30;
       width: 100%;
       height: 3px;
-      transform-origin: left center;
       transform: scaleX(0);
-      background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--accent-3));
-      box-shadow: 0 0 18px var(--glow);
+      transform-origin: left center;
+      background: linear-gradient(90deg, var(--blue), var(--cyan), var(--violet));
+      box-shadow: 0 0 18px rgba(37, 99, 235, .34);
     }
 
     .topbar {
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 20;
       border-bottom: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.86);
+      background: rgba(255, 255, 255, .78);
       backdrop-filter: blur(16px);
-      animation: slideDown 520ms ease-out both;
     }
 
     .topbar-inner {
       width: min(1120px, calc(100% - 32px));
+      min-height: 62px;
       margin: 0 auto;
-      min-height: 60px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 16px;
     }
 
-    .identity { min-width: 0; }
+    .site-title { margin: 0; font-size: 18px; line-height: 1.2; letter-spacing: 0; }
+    .site-subtitle { margin: 2px 0 0; color: var(--muted); font-size: 13px; }
 
-    h1, h2, h3 { margin: 0; letter-spacing: 0; }
-
-    h1 { font-size: 19px; line-height: 1.2; }
-
-    .subtitle {
-      margin: 2px 0 0;
-      color: var(--muted);
-      font-size: 13px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+    .actions {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 10px;
+      flex-wrap: wrap;
     }
-
-    .actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
 
     .button {
       position: relative;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 36px;
-      padding: 0 14px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
+      min-height: 38px;
+      min-width: 86px;
+      padding: 0 15px;
+      border: 1px solid rgba(37, 99, 235, .2);
+      border-radius: 999px;
       color: var(--ink);
-      background: #fff;
+      background: rgba(255, 255, 255, .86);
+      text-align: center;
       text-decoration: none;
-      font-size: 13px;
-      font-weight: 650;
-      white-space: nowrap;
       font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1;
       cursor: pointer;
       overflow: hidden;
-      transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease, background 160ms ease, color 160ms ease;
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
     }
 
     .button::after {
       content: "";
       position: absolute;
       inset: 0;
-      transform: translateX(-120%) skewX(-18deg);
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.58), transparent);
-      transition: transform 520ms ease;
+      transform: translateX(-120%) skewX(-16deg);
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.75), transparent);
+      transition: transform .56s ease;
     }
 
-    .button.primary { border-color: var(--accent); background: var(--accent); color: #fff; }
-    .button:hover { border-color: var(--accent); color: var(--accent-dark); transform: translateY(-1px); box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12); }
-    .button:hover::after { transform: translateX(120%) skewX(-18deg); }
-    .button.primary:hover { color: #fff; background: var(--accent-dark); }
+    .button:hover {
+      transform: translateY(-2px);
+      border-color: rgba(37, 99, 235, .48);
+      box-shadow: 0 12px 28px rgba(37, 99, 235, .14);
+    }
+
+    .button:hover::after { transform: translateX(120%) skewX(-16deg); }
+    .button.primary { border-color: transparent; color: #fff; background: linear-gradient(135deg, var(--blue), var(--violet)); }
 
     main {
       width: min(1120px, calc(100% - 32px));
-      margin: 28px auto 64px;
+      margin: 26px auto 72px;
       display: grid;
-      gap: 22px;
+      gap: 18px;
     }
 
-    .hero {
+    h1, h2, h3, p { margin-top: 0; }
+    h2 { margin-bottom: 18px; font-size: 24px; letter-spacing: 0; }
+    h3 { margin-bottom: 8px; font-size: 18px; letter-spacing: 0; }
+    p { margin-bottom: 10px; }
+
+    .section,
+    .hero-card,
+    .side-card {
       position: relative;
       overflow: hidden;
-      padding: 42px 44px;
       border: 1px solid var(--line);
-      border-radius: 18px;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.72));
+      border-radius: var(--radius);
+      background: var(--paper);
       box-shadow: var(--shadow);
-      opacity: 0;
-      transform: translateY(28px) scale(0.985);
-      transition: opacity 620ms ease, transform 620ms ease, box-shadow 220ms ease;
+      backdrop-filter: blur(14px);
     }
 
-    .hero::before,
-    .panel::before {
+    .section,
+    .hero-card,
+    .side-card {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .62s ease, transform .62s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+
+    .section.is-visible,
+    .hero-card.is-visible,
+    .side-card.is-visible { opacity: 1; transform: translateY(0); }
+
+    .section.is-active { border-color: rgba(37, 99, 235, .34); box-shadow: 0 26px 70px rgba(37, 99, 235, .15); }
+
+    .section::before,
+    .hero-card::before,
+    .side-card::before {
       content: "";
       position: absolute;
       inset: 0;
-      z-index: 0;
       pointer-events: none;
       opacity: 0;
-      background: linear-gradient(115deg, transparent 8%, rgba(255, 255, 255, 0.52) 42%, transparent 58%);
-      transform: translateX(-120%);
-      transition: opacity 220ms ease, transform 900ms ease;
+      transform: translateX(-120%) skewX(-12deg);
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.55), transparent);
+      transition: opacity .2s ease, transform .8s ease;
     }
 
-    .hero:hover::before,
-    .panel:hover::before { opacity: 1; transform: translateX(120%); }
+    .section:hover::before,
+    .hero-card:hover::before,
+    .side-card:hover::before { opacity: 1; transform: translateX(120%) skewX(-12deg); }
 
-    .hero > *, .panel > * { position: relative; z-index: 1; }
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 330px;
+      gap: 18px;
+    }
 
-    .name-row { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 18px; }
-    .name { font-size: clamp(36px, 6vw, 64px); line-height: 1; font-weight: 760; }
-    .role { color: var(--accent); font-size: 18px; font-weight: 760; }
-    .tagline { max-width: 680px; margin: 0 0 22px; color: #334155; font-size: 17px; }
+    .hero-card { padding: clamp(26px, 5vw, 48px); }
+    .side-card { padding: 24px; }
 
-    .meta-grid {
+    .name-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .name {
+      margin: 0 0 14px;
+      font-size: clamp(54px, 10vw, 104px);
+      line-height: .92;
+      letter-spacing: 0;
+      color: transparent;
+      background: linear-gradient(120deg, #101827, var(--blue), var(--violet), #101827);
+      background-size: 180% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      animation: textLight 5s ease-in-out infinite alternate;
+    }
+
+    .role-badge {
+      flex: 0 0 auto;
+      padding: 8px 12px;
+      border-radius: 999px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      font-weight: 800;
+      box-shadow: 0 14px 28px rgba(37, 99, 235, .22);
+    }
+
+    .intro {
+      max-width: 760px;
+      color: #334155;
+      font-size: 17px;
+    }
+
+    .info-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 10px;
-      margin-top: 20px;
+      margin-top: 24px;
     }
 
-    .meta-item {
+    .info-item {
+      min-height: 82px;
       padding: 13px 14px;
       border: 1px solid var(--line);
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.7);
+      border-radius: 13px;
+      background: rgba(255, 255, 255, .72);
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
     }
 
-    .meta-label { display: block; color: var(--muted); font-size: 12px; }
-    .meta-value { display: block; margin-top: 2px; font-weight: 700; }
+    .info-item:hover { transform: translateY(-3px); border-color: rgba(37, 99, 235, .35); background: #fff; }
+    .info-item small { display: block; color: var(--muted); font-size: 12px; }
+    .info-item strong { display: block; margin-top: 4px; font-size: 16px; }
 
-    .panel {
-      position: relative;
-      overflow: hidden;
-      padding: 30px 34px;
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      background: var(--paper);
-      box-shadow: var(--shadow);
-      opacity: 0;
-      transform: translateY(28px) scale(0.985);
-      transition: opacity 620ms ease, transform 620ms ease, box-shadow 220ms ease;
-      scroll-margin-top: 82px;
+    .side-card h2 { margin-bottom: 14px; }
+    .quick-list { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+    .quick-list li { padding: 12px 13px; border-radius: 12px; background: var(--soft-blue); font-weight: 700; }
+
+    .section {
+      padding: 28px;
+      scroll-margin-top: 84px;
     }
-
-    .panel.is-visible,
-    .hero.is-visible { opacity: 1; transform: translateY(0) scale(1); }
-    .panel.is-active,
-    .hero.is-active { box-shadow: var(--shadow-active); }
-    .panel:hover,
-    .hero:hover { transform: translateY(-3px) scale(1.002); }
 
     .section-title {
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 20px;
-      font-size: 23px;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 18px;
     }
 
-    .section-title::before {
+    .section-title h2 { margin: 0; }
+    .section-title h2::before {
       content: "";
+      display: inline-block;
       width: 10px;
       height: 28px;
+      margin-right: 10px;
+      vertical-align: -5px;
       border-radius: 999px;
-      background: linear-gradient(180deg, var(--accent), var(--accent-2));
-      box-shadow: 0 0 20px var(--glow);
+      background: linear-gradient(180deg, var(--blue), var(--cyan));
+      box-shadow: 0 0 18px rgba(37, 99, 235, .3);
     }
 
-    .timeline { display: grid; gap: 16px; }
-    .job, .project, .school { display: grid; grid-template-columns: 148px 1fr; gap: 18px; padding-top: 16px; border-top: 1px solid var(--line); }
-    .job:first-child, .project:first-child, .school:first-child { padding-top: 0; border-top: 0; }
-    .time { color: var(--accent-dark); font-weight: 750; }
-    .item-head { display: flex; justify-content: space-between; gap: 16px; margin-bottom: 8px; }
-    .item-title { font-size: 18px; font-weight: 780; }
-    .item-role { color: var(--muted); font-weight: 700; white-space: nowrap; }
-    .project p, .job p, .school p { margin: 0 0 8px; }
+    .section-title span { color: var(--muted); font-size: 13px; font-weight: 700; }
 
-    .label { color: var(--accent-dark); font-weight: 760; }
-    ul { margin: 8px 0 0; padding-left: 1.2em; }
-    li { margin: 4px 0; }
-
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
+    .skill-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
       margin: 0;
       padding: 0;
       list-style: none;
     }
 
-    .skills li {
-      margin: 0;
-      padding: 8px 12px;
-      border: 1px solid rgba(37, 99, 235, 0.18);
-      border-radius: 999px;
-      background: rgba(37, 99, 235, 0.08);
-      color: #1e3a8a;
-      font-weight: 650;
+    .skill-list li {
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: rgba(255,255,255,.7);
     }
 
-    .page-rail {
-      position: fixed;
-      right: 28px;
-      top: 50%;
-      z-index: 11;
+    .timeline {
       display: grid;
-      gap: 10px;
+      gap: 14px;
+    }
+
+    .timeline-item,
+    .project-card {
+      position: relative;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(255,255,255,.68);
+      transition: transform .18s ease, border-color .18s ease, background .18s ease, box-shadow .18s ease;
+    }
+
+    .timeline-item:hover,
+    .project-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(37, 99, 235, .34);
+      background: #fff;
+      box-shadow: 0 14px 34px rgba(37, 99, 235, .12);
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 170px minmax(0, 1fr);
+      gap: 18px;
+    }
+
+    .time {
+      color: var(--blue);
+      font-weight: 850;
+    }
+
+    .item-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 8px;
+    }
+
+    .job-title,
+    .company-name { margin: 0; }
+
+    .position {
+      flex: 0 0 auto;
+      padding: 4px 10px;
+      border-radius: 999px;
+      color: #1d4ed8;
+      background: rgba(37, 99, 235, .1);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .desc { color: #334155; }
+    .list { margin: 10px 0 0; padding-left: 1.2em; color: #334155; }
+    .list li { margin: 5px 0; }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .project-card {
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .project-company { color: var(--muted); font-size: 13px; font-weight: 700; }
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+    .tag { padding: 5px 9px; border-radius: 999px; color: #1e3a8a; background: rgba(37, 99, 235, .09); font-size: 12px; font-weight: 750; }
+
+    .personal-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 280px;
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .data-card {
+      padding: 18px;
+      border-radius: 14px;
+      color: #f8fbff;
+      background: linear-gradient(135deg, #1d4ed8, #7c3aed);
+      box-shadow: 0 18px 40px rgba(37, 99, 235, .24);
+    }
+
+    .data-number { display: block; font-size: 42px; line-height: 1; font-weight: 900; }
+
+    .nav-rail {
+      position: fixed;
+      right: 24px;
+      top: 50%;
+      z-index: 12;
+      display: grid;
+      gap: 9px;
       padding: 10px 8px;
       border: 1px solid var(--line);
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.78);
-      box-shadow: 0 14px 34px rgba(15, 23, 42, 0.12);
-      backdrop-filter: blur(12px);
+      background: rgba(255,255,255,.76);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
       transform: translateY(-50%);
     }
 
-    .page-dot { width: 8px; height: 8px; padding: 0; border: 0; border-radius: 999px; background: #a8b3c2; cursor: pointer; transition: height 180ms ease, background 180ms ease, transform 180ms ease; }
-    .page-dot:hover, .page-dot.is-active { height: 22px; background: var(--accent); transform: scale(1.05); }
+    .nav-dot {
+      width: 8px;
+      height: 8px;
+      padding: 0;
+      border: 0;
+      border-radius: 999px;
+      background: #9aa9bf;
+      cursor: pointer;
+      transition: height .18s ease, background .18s ease;
+    }
+
+    .nav-dot.is-active,
+    .nav-dot:hover { height: 23px; background: linear-gradient(180deg, var(--blue), var(--cyan)); }
 
     .back-top {
       position: fixed;
-      right: 24px;
-      bottom: 24px;
-      z-index: 12;
+      right: 20px;
+      bottom: 20px;
+      z-index: 13;
       width: 44px;
       height: 44px;
       border: 0;
       border-radius: 999px;
-      color: #fff;
-      background: var(--accent);
-      box-shadow: 0 14px 30px rgba(37, 99, 235, 0.26);
+      color: white;
+      background: linear-gradient(135deg, var(--blue), var(--violet));
+      box-shadow: 0 16px 32px rgba(37, 99, 235, .24);
       cursor: pointer;
       opacity: 0;
       pointer-events: none;
-      transform: translateY(10px) scale(0.94);
-      transition: opacity 180ms ease, transform 180ms ease, background 160ms ease;
+      transform: translateY(10px) scale(.95);
+      transition: opacity .18s ease, transform .18s ease;
     }
 
     .back-top.is-visible { opacity: 1; pointer-events: auto; transform: translateY(0) scale(1); }
-    .back-top:hover { background: var(--accent-dark); transform: translateY(-2px) scale(1.03); }
-    .back-top::before { content: ""; display: block; width: 11px; height: 11px; margin: 17px auto 0; border-top: 2px solid currentColor; border-left: 2px solid currentColor; transform: rotate(45deg); }
+    .back-top::before { content: ""; display: block; width: 12px; height: 12px; margin: 18px auto 0; border-top: 2px solid currentColor; border-left: 2px solid currentColor; transform: rotate(45deg); }
 
-    @keyframes slideDown { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes stageShift { from { background-position: 0 0, 0 0, 0 0, 0 0; } to { background-position: 80px 0, -60px 40px, 80px 0, 64px 0; } }
+    @keyframes gridMove { to { background-position: 58px 58px; } }
+    @keyframes textLight { to { background-position: 100% 0; } }
 
-    @media (max-width: 820px) {
-      .topbar-inner { width: min(100% - 20px, 1120px); align-items: flex-start; flex-direction: column; padding: 12px 0; gap: 10px; }
-      .actions { width: 100%; justify-content: flex-start; }
+    @media (max-width: 980px) {
+      .hero, .personal-grid { grid-template-columns: 1fr; }
+      .info-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .project-grid { grid-template-columns: 1fr; }
+      .nav-rail { display: none; }
+    }
+
+    @media (max-width: 680px) {
+      .topbar-inner { width: min(100% - 20px, 1120px); align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      .actions { justify-content: flex-start; }
+      .button { min-width: 78px; min-height: 36px; padding: 0 13px; }
       main { width: min(100% - 20px, 1120px); margin-top: 18px; }
-      .hero, .panel { padding: 24px 18px; border-radius: 14px; }
-      .name-row, .item-head { display: block; }
-      .role, .item-role { display: block; margin-top: 6px; }
-      .meta-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .job, .project, .school { grid-template-columns: 1fr; gap: 6px; }
-      .page-rail { display: none; }
+      .hero-card, .side-card, .section { padding: 20px; border-radius: 14px; }
+      .name-row, .item-head, .project-meta { display: block; }
+      .role-badge, .position { display: inline-flex; margin-top: 8px; }
+      .info-grid, .skill-list { grid-template-columns: 1fr; }
+      .timeline-item { grid-template-columns: 1fr; gap: 8px; }
+      .project-card { min-height: auto; }
     }
 
     @media print {
       body { background: #fff; }
-      body::before, .progress, .topbar, .back-top, .page-rail { display: none; }
+      body::before, .progress, .topbar, .nav-rail, .back-top { display: none; }
       main { width: 100%; margin: 0; display: block; }
-      .hero, .panel { opacity: 1; transform: none; box-shadow: none; border: 0; border-radius: 0; break-inside: avoid; page-break-inside: avoid; padding: 18px 0; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      body::before, .topbar { animation: none; }
-      .hero, .panel, .button, .back-top { transition: none; }
-      .hero, .panel { opacity: 1; transform: none; }
+      .hero, .section { display: block; }
+      .section, .hero-card, .side-card, .timeline-item, .project-card { opacity: 1; transform: none; box-shadow: none; border-color: #e5e7eb; background: #fff; break-inside: avoid; }
+      .section { margin-bottom: 14px; }
     }
   </style>
 </head>
@@ -340,137 +492,225 @@
   <div class="progress" aria-hidden="true"></div>
   <header class="topbar">
     <div class="topbar-inner">
-      <div class="identity">
-        <h1>张伟 - WEB前端开发简历</h1>
-        <p class="subtitle">9年经验 / 本科 / 现居青岛 / WEB前端开发</p>
+      <div>
+        <h1 class="site-title">张伟 - web前端简历</h1>
+        <p class="site-subtitle">9年经验 / 本科 / 青岛 / 一周内到岗</p>
       </div>
-      <nav class="actions" aria-label="简历操作">
-        <a class="button" href="assets/resume.pdf" download>下载 PDF</a>
+      <nav class="actions" aria-label="页面操作">
+        <a class="button" href="#projects">项目经历</a>
+        <a class="button" href="assets/resume.pdf" download>下载简历</a>
         <button class="button primary" type="button" onclick="window.print()">打印</button>
       </nav>
     </div>
   </header>
 
   <main>
-    <section class="hero resume-section" id="profile">
-      <div class="name-row">
-        <div>
-          <h2 class="name">张伟</h2>
-          <p class="tagline">态度决定一切，给我一个机会，我会给你一个大大的惊喜。</p>
+    <section class="hero" id="top">
+      <div class="hero-card reveal">
+        <div class="name-row">
+          <div>
+            <h2 class="name">张伟</h2>
+            <p class="intro">9年前端工作经验，从业以来主要就业于电商行业、保险推广行业、游戏交易支付行业。熟悉整体开发流程，从项目需求的沟通、ui设计实现、开发落地最后到测试交付上线。</p>
+          </div>
+          <span class="role-badge">web前端</span>
         </div>
-        <div class="role">WEB前端开发</div>
+        <div class="info-grid">
+          <div class="info-item"><small>基本信息</small><strong>男 / 32</strong></div>
+          <div class="info-item"><small>学历</small><strong>本科</strong></div>
+          <div class="info-item"><small>城市</small><strong>青岛</strong></div>
+          <div class="info-item"><small>经验</small><strong>9年经验</strong></div>
+          <div class="info-item"><small>电话</small><strong>17685472913</strong></div>
+          <div class="info-item"><small>邮箱</small><strong>zhv0831@163.com</strong></div>
+          <div class="info-item"><small>期望</small><strong>面议</strong></div>
+          <div class="info-item"><small>到岗</small><strong>一周内到岗</strong></div>
+        </div>
       </div>
-      <div class="meta-grid">
-        <div class="meta-item"><span class="meta-label">基本信息</span><span class="meta-value">男 / 33岁 / 已婚</span></div>
-        <div class="meta-item"><span class="meta-label">学历经验</span><span class="meta-value">本科 / 9年经验</span></div>
-        <div class="meta-item"><span class="meta-label">联系方式</span><span class="meta-value">17685472913</span></div>
-        <div class="meta-item"><span class="meta-label">邮箱</span><span class="meta-value">zhv0831@163.com</span></div>
-        <div class="meta-item"><span class="meta-label">现居城市</span><span class="meta-value">青岛</span></div>
-        <div class="meta-item"><span class="meta-label">期望薪资</span><span class="meta-value">面议</span></div>
-        <div class="meta-item"><span class="meta-label">到岗时间</span><span class="meta-value">一周内到岗</span></div>
-        <div class="meta-item"><span class="meta-label">求职方向</span><span class="meta-value">WEB前端</span></div>
-      </div>
+      <aside class="side-card reveal">
+        <h2>求职意向</h2>
+        <ul class="quick-list">
+          <li>岗位：web前端</li>
+          <li>城市：青岛</li>
+          <li>薪资：面议</li>
+          <li>到岗：一周内到岗</li>
+        </ul>
+      </aside>
     </section>
 
-    <section class="panel resume-section" id="work">
-      <h2 class="section-title">工作经验</h2>
-      <div class="timeline">
-        <article class="job"><div class="time">2023.05 - 至今</div><div><div class="item-head"><h3 class="item-title">青岛微星软件</h3><span class="item-role">web前端 + app开发</span></div></div></article>
-        <article class="job"><div class="time">2021.03 - 2023.04</div><div><div class="item-head"><h3 class="item-title">北京希风开发科技有限公司</h3><span class="item-role">WEB前端</span></div></div></article>
-        <article class="job"><div class="time">2019.03 - 2021.02</div><div><div class="item-head"><h3 class="item-title">北京海城源科技有限公司</h3><span class="item-role">WEB前端</span></div></div></article>
-        <article class="job"><div class="time">2016.12 - 2018.12</div><div><div class="item-head"><h3 class="item-title">上海子希科技有限公司</h3><span class="item-role">WEB前端</span></div></div></article>
-      </div>
-      <ul>
-        <li>根据 UI 设计稿实现需求页面，与产品、UI 探讨页面交互并优化用户体验。</li>
-        <li>解决日常项目 BUG，优化已有项目代码，保证代码规范统一。</li>
-        <li>参与新项目需求评审，落实技术可行性，负责框架搭建、技术选型和排期规划。</li>
-        <li>能够快速接手维护已有项目，具备项目从 0 到 1 的开发能力。</li>
+    <section class="section reveal" id="intro">
+      <div class="section-title"><h2>个人介绍</h2></div>
+      <p class="desc">9年前端工作经验，从业以来主要就业于电商行业、保险推广行业、游戏交易支付行业。熟悉整体开发流程，从项目需求的沟通、ui设计实现、开发落地最后到测试交付上线。务实负责，积极与协作的同事沟通，保证业务需求尽快落地。优秀的适应能力，接手参与了10多个项目，近期多为从0到1的项目。</p>
+    </section>
+
+    <section class="section reveal" id="skills">
+      <div class="section-title"><h2>专业技能</h2></div>
+      <ul class="skill-list">
+        <li>熟练使用html+css进行页面布局，使用js实现页面交互与业务逻辑。了解TS，熟练使用npm包管理工具。</li>
+        <li>技术框架方面偏重vue2、uniapp、微信小程序，参与维护vue3、react项目。</li>
+        <li>熟练使用Avue、Element Ui、Vant、UViewUi等前端UI框架。</li>
+        <li>对于webpack、vite打包构建有一定认识，能够从0到1搭建脚手架。</li>
+        <li>了解nodejs，熟练使用ai，关注前沿ai工具，能够使用ai工具去辅助完成一些项目的落地。</li>
       </ul>
     </section>
 
-    <section class="panel resume-section" id="recent-projects">
-      <h2 class="section-title">近期项目</h2>
+    <section class="section reveal" id="work">
+      <div class="section-title"><h2>工作经验</h2><span>2016.12 - 至今</span></div>
       <div class="timeline">
-        <article class="project"><div class="time">2024.10 - 至今</div><div><div class="item-head"><h3 class="item-title">BetPay内嵌版 + H5版</h3><span class="item-role">web前端</span></div><p><span class="label">项目介绍：</span>随着业务发展，BetPay 推出内嵌版供第三方接入使用，H5 版为完整虚拟币交易系统。</p><p><span class="label">技术：</span>Vue2、vue-cli、vue-router、Vant UI、MQTT、Firebase、Vue I18n。</p><p><span class="label">职责：</span>负责从 0 到 1 规划构建项目，制定产品逻辑、盘口参数和接口参数。</p><p><span class="label">结果：</span>主要运营在印度、巴基斯坦、孟加拉、菲律宾、巴西等国家，每日订单量过万。</p></div></article>
-        <article class="project"><div class="time">2024.09 - 至今</div><div><div class="item-head"><h3 class="item-title">数码产品租物小程序以及后台管理系统</h3><span class="item-role">web前端</span></div><p><span class="label">项目介绍：</span>以数码产品租赁和买断销售为主，C 端负责用户租赁、买断，B 端包含订单管理、上架管理、报表等。</p><p><span class="label">技术：</span>C 端 uniapp 微信小程序，B 端 React + Ant Design。</p><p><span class="label">职责：</span>临时接手维护小程序页面调整，主要参与 B 端各类报表开发。</p></div></article>
-        <article class="project"><div class="time">2023.10 - 至今</div><div><div class="item-head"><h3 class="item-title">微信机器人项目</h3><span class="item-role">负责人</span></div><p><span class="label">项目介绍：</span>业余时间开发的微信群智能回复机器人，包含微信机器人主体 Node 接口、后台管理 UI、游戏接口对接 Node 项目。</p><p><span class="label">技术：</span>Node.js、Express、sqlite3、node-html-to-image、sharp、pm2。</p><p><span class="label">职责：</span>对接微信 hook 框架和各类 API，完善娱乐功能和游戏战报功能，并持续跟进游戏功能。</p><p><span class="label">结果：</span>机器人用户从 2023 年几个群增长到 2025 年 10 月左右稳定 550 个群左右，公众号订阅 900+。</p></div></article>
-        <article class="project"><div class="time">2023.05 - 2024.12</div><div><div class="item-head"><h3 class="item-title">MiPay APP + H5</h3><span class="item-role">web前端</span></div><p><span class="label">项目介绍：</span>虚拟币交易系统，涵盖 H5 和安卓 APP，主要为香港客户使用，包含挂单、买单等完整交易流程。</p><p><span class="label">技术：</span>uniapp、Vue2、SCSS、unipush，多端组件封装。</p><p><span class="label">职责：</span>接手维护项目，开发新功能，打包上传指定平台并配合同事完成 APK 发版。</p><p><span class="label">结果：</span>用户订单成交量每天稳定在 1000 单以上。</p></div></article>
-        <article class="project"><div class="time">2024.04 - 2024.08</div><div><div class="item-head"><h3 class="item-title">BetGo MiniApp项目</h3><span class="item-role">web前端</span></div><p><span class="label">项目介绍：</span>Telegram MiniApp 项目，用于在 Telegram 机器人内自助下单，包含自助充值、提现、汇率查询等。</p><p><span class="label">技术：</span>Telegram SDK、Vue3、Vite、Pinia、TypeScript、Vant4。</p><p><span class="label">职责：</span>负责从 0 搭建项目，配合后端接入 Telegram 机器人。</p></div></article>
-        <article class="project"><div class="time">2023.03 - 2024.08</div><div><div class="item-head"><h3 class="item-title">天星医疗器械项目</h3><span class="item-role">web前端</span></div><p><span class="label">项目介绍：</span>医疗康复系统后台管理，主要为医院骨科使用，包含医院、医生、康复师、病人、康复训练教程及训练数据展示。</p><p><span class="label">技术：</span>若依框架、Vue2、SCSS、vue-router、ECharts。</p><p><span class="label">职责：</span>维护后台管理功能，参与产品设计辅助。</p><p><span class="label">结果：</span>已有数个医院和诊所使用。</p></div></article>
+        <article class="timeline-item">
+          <div class="time">2023.05 - 至今</div>
+          <div>
+            <div class="item-head"><h3 class="company-name">青岛微星软件</h3><span class="position">web前端+app开发</span></div>
+            <p class="desc">公司主要业务为游戏支付、游戏虚拟币交易，也有一些其他软件开发业务。主要推广产品为H5页面、APP等。主要运营在海外巴西、秘鲁、菲律宾、南亚等地区。</p>
+            <ul class="list"><li>对接需求评估技术的可行性。</li><li>打包app协助运营同事上架。</li><li>对接游戏平台接入页面。</li><li>整体评估项目技术，推动项目需求进度。</li><li>参与产品需求的制定。</li><li>主要负责游戏支付虚拟币交易的app以及h5开发，同时也管理其他数码产品租赁项目、医疗器械管理项目等。</li></ul>
+          </div>
+        </article>
+        <article class="timeline-item">
+          <div class="time">2021.03 - 2023.04</div>
+          <div>
+            <div class="item-head"><h3 class="company-name">北京希风开发科技有限公司</h3><span class="position">web前端</span></div>
+            <p class="desc">公司主营电商业务，自营一个综合的商城系统。主要推广的客户端为小程序、安卓+ios App。</p>
+            <ul class="list"><li>对接需求评估技术的可行性。</li><li>优化项目代码，解决日常BUG。</li><li>配合运营同事埋点，B端进行展示数据，规划报表的展示，为其他客户端开发同事提供埋点规范文档。</li><li>主要负责商城H5+小程序商城+后台管理的开发与技术评估实现，也参与公司其他项目例如购物返利小程序、便民生活小程序、广场舞小程序等。</li></ul>
+          </div>
+        </article>
+        <article class="timeline-item">
+          <div class="time">2019.03 - 2021.02</div>
+          <div>
+            <div class="item-head"><h3 class="company-name">北京海城源科技有限公司</h3><span class="position">web前端</span></div>
+            <p class="desc">公司主属于保险行业，主要经营保险产品推广销售。主要推广的项目为公众号、H5落地页。</p>
+            <ul class="list"><li>根据UI设计稿和产品文档开发页面。</li><li>日常项目BUG的解决。</li><li>优化项目代码，保证代码统一规范。</li><li>主要负责H5、PC页面、后台管理系统、公众号项目的开发。</li></ul>
+          </div>
+        </article>
+        <article class="timeline-item">
+          <div class="time">2016.12 - 2018.12</div>
+          <div>
+            <div class="item-head"><h3 class="company-name">上海子希科技有限公司</h3><span class="position">web前端</span></div>
+            <p class="desc">公司主营电商业务（电子产品为主）。主要推广在天猫以及自己的网站宣传页。</p>
+            <ul class="list"><li>根据UI设计稿和产品文档开发页面。</li><li>日常项目BUG的解决。</li><li>在该公司实习为主，主要负责公司官网、ERP系统、产品宣传页的开发。</li></ul>
+          </div>
+        </article>
       </div>
     </section>
 
-    <section class="panel resume-section" id="mall-projects">
-      <h2 class="section-title">商城与小程序项目</h2>
-      <div class="timeline">
-        <article class="project"><div class="time">2021.03 - 2023.04</div><div><div class="item-head"><h3 class="item-title">希风-榜尚优品 BUYONLIST 小程序</h3><span class="item-role">WEB前端</span></div><p>综合商城小程序，包含商城自营、商家入驻、活动、优惠券、积分、小程序直播、Sass 活动页面等。</p><p><span class="label">技术：</span>uniapp、wx.request、uView UI、微信 JSSDK。</p><p><span class="label">职责：</span>开发需求页面、封装公共请求、优化下单交互、部署埋点、解决 uniapp 动态组件问题，并完成动态 tabbar 配置。</p><p><span class="label">结果：</span>用户 50w+，平时日活 1w+，最高日活 5w+，平均日成交总额 20w 左右，最高日成交额 500w+。</p></div></article>
-        <article class="project"><div class="time">2023.08 - 2024.12</div><div><div class="item-head"><h3 class="item-title">BetPay app</h3><span class="item-role">app开发</span></div><p>虚拟币交易系统，面向玩家使用，包含虚拟币发布、购买流程、积分兑换等体系。</p><p><span class="label">技术：</span>uniapp、Vue2、厂商推送、多语言。</p><p><span class="label">职责：</span>从 0 到 1 开发，负责项目搭建、APK 和 IPA 包配置及上架配合。</p><p><span class="label">结果：</span>主要上架谷歌和苹果商店，运行在巴西、秘鲁、菲律宾等国家。</p></div></article>
-        <article class="project"><div class="time">2021.09 - 2022.12</div><div><div class="item-head"><h3 class="item-title">希风-舞林乐购项目</h3><span class="item-role">web前端</span></div><p>服务中老年广场舞的小程序和后台系统，包含活动宣传、投票、排名、作品详情和电商推广。</p><p><span class="label">技术：</span>uniapp、TypeScript、lPainter、Rapper、Vue CLI、Vuex、avue、Element UI。</p><p><span class="label">职责：</span>维护页面、开发活动页面、绘制海报、处理分享带参、上传图片视频、后台活动配置和作品管理。</p><p><span class="label">结果：</span>用户 50w+，最高新增用户 3w/天，最高日活 7w/天。</p></div></article>
-        <article class="project"><div class="time">2021.03 - 2023.04</div><div><div class="item-head"><h3 class="item-title">希风-兜品MALL综合后台管理系统</h3><span class="item-role">web前端</span></div><p>配合兜品 MALL 小程序的管理后台，包含订单、支付、售后、商品、商户、供应商、活动、系统配置、报表、直播管理等。</p><p><span class="label">技术：</span>Vue CLI、vue-router、Vuex、axios、avue、Element UI、ECharts、qrcode.js。</p><p><span class="label">职责：</span>维护和开发后台页面，完善商品模块，开发活动会场和 Sass 功能，帮助实现 C 端首页配置化。</p><p><span class="label">结果：</span>减少运营和开发成本，丰富多端活动配置能力。</p></div></article>
-        <article class="project"><div class="time">2021.08 - 2022.06</div><div><div class="item-head"><h3 class="item-title">希风-利省生活项目</h3><span class="item-role">web前端</span></div><p>便民生活小程序，包含景区门票、酒店、小区物业、福利购领券分佣、自营商品购买及后台配置系统。</p><p><span class="label">技术：</span>微信原生小程序、Vant Weapp、Vue CLI、Vuex、avue、Element UI。</p><p><span class="label">职责：</span>从 0 到 1 开发，负责项目构建、接口封装、路由定义、组件封装、小程序发布及后台 UI 设定。</p><p><span class="label">结果：</span>项目开发测试完成后交由其他同事维护，用户 2w+。</p></div></article>
+    <section class="section reveal" id="projects">
+      <div class="section-title"><h2>项目经历</h2><span>主要项目展示</span></div>
+      <div class="project-grid">
+        <article class="project-card">
+          <div>
+            <div class="project-meta"><div><span class="project-company">青岛微星软件</span><h3>PayBet内嵌项目</h3></div><span class="time">2024.01 - 至今</span></div>
+            <p class="desc">项目简介：本项目主要为对接游戏盘口的内嵌H5，为盘口用户提供快速注册、快速购买、便捷提现等功能。</p>
+            <p class="desc">个人职责：主要负责项目从0构建，业务需求的参与制定，游戏盘口的技术对接，项目中间的性能优化，例如：首屏时间优化、业务组件的封装等。</p>
+          </div>
+          <div class="tags"><span class="tag">vue2单页面</span><span class="tag">vant2</span><span class="tag">VueI18n</span><span class="tag">Mqt</span><span class="tag">Google firebase</span></div>
+        </article>
+        <article class="project-card">
+          <div>
+            <div class="project-meta"><div><span class="project-company">青岛微星软件</span><h3>MPay+PayBet APP</h3></div><span class="time">2023.05 - 至今</span></div>
+            <p class="desc">项目简介：两个项目均为游戏支付、虚拟币交易项目。主运行安卓、ios客户端。主要营运在香港、巴西、秘鲁、菲律宾、印度、孟加拉、巴基斯坦等国家。业务需求为挂单、买单、积分兑换等流程。</p>
+            <p class="desc">个人职责：MPay是自己接手的项目，PayBet是从0开始构建的项目，项目的整体构建，参与产品需求开发，以及一些产品逻辑的参与制定，评估一些插件的使用，不同平台的兼容性处理。</p>
+          </div>
+          <div class="tags"><span class="tag">uniapp跨端</span><span class="tag">unipush</span><span class="tag">uview</span><span class="tag">阿里云国际KYC</span><span class="tag">uniapp国际化</span></div>
+        </article>
+        <article class="project-card">
+          <div>
+            <div class="project-meta"><div><span class="project-company">青岛微星软件</span><h3>数码租售平台（小程序+后台管理）</h3></div><span class="time">2024.09 - 至今</span></div>
+            <p class="desc">项目简介：小程序主要是以数码产品的租赁和买断销售为主。主要功能：C端为分为用户租赁、买断数码产品。B端为销售管理，包含订单管理、上架管理、各种报表等。</p>
+            <p class="desc">个人职责：接手维护小程序一些页面开发，主要参与开发的以后台管理为主，参与报表系统的、订单管理调整的开发。</p>
+          </div>
+          <div class="tags"><span class="tag">uniapp</span><span class="tag">微信小程序</span><span class="tag">React16</span><span class="tag">Ant Design</span></div>
+        </article>
+        <article class="project-card">
+          <div>
+            <div class="project-meta"><div><span class="project-company">青岛微星软件</span><h3>BetGo MiniApp</h3></div><span class="time">2024.04 - 2024.06</span></div>
+            <p class="desc">项目简介：该项目主要为Telegram的miniapp（类似国内的小程序）项目，用于在Telegram机器人自助下单。主要功能：自助充值、提现以及查询各种汇率等，后因业务调整停止运行此项目。</p>
+            <p class="desc">个人职责：负责从0搭建此项目，配合后端同事接入到Telegram的机器人。</p>
+          </div>
+          <div class="tags"><span class="tag">telegram sdk</span><span class="tag">Vue3</span><span class="tag">Vite</span><span class="tag">Pinia</span><span class="tag">TypeScript</span><span class="tag">Vant4</span></div>
+        </article>
+        <article class="project-card">
+          <div>
+            <div class="project-meta"><div><span class="project-company">青岛微星软件</span><h3>天星医疗健康管理系统</h3></div><span class="time">2023.05 - 2024.09</span></div>
+            <p class="desc">项目简介：该项目为医疗康复后台管理系统，主要为医院骨科使用。主要功能：包含医院管理、医生管理、康复师管理、病人管理、康复训练教程以及康复训练数据展示等。</p>
+            <p class="desc">个人职责：维护后台管理功能，参与产品设计辅助。</p>
+          </div>
+          <div class="tags"><span class="tag">若依框架</span><span class="tag">vue2</span><span class="tag">sccs</span><span class="tag">vue-router</span><span class="tag">eharts</span></div>
+        </article>
+        <article class="project-card">
+          <div>
+            <div class="project-meta"><div><span class="project-company">北京希风开发科技有限公司</span><h3>榜尚优品小程序+后台管理系统</h3></div><span class="time">2021.03 - 2023.04</span></div>
+            <p class="desc">项目介绍：一个综合的商城小程序，包含商城自营、商家入驻、丰富的活动系统、优惠券系统、积分系统、小程序直播接入、sass页面等等。后台管理系统为商城小程序的管理端，主要有订单管理、商品管理、供应商管理、活动管理、小程序页面管理、报表管理等。</p>
+            <p class="desc">个人职责：负责业务需求的开发，项目埋点的设计执行，sass页面的实现，配合后端通过用户权限来控制tabbar的展示。后台管理系统的维护。</p>
+          </div>
+          <div class="tags"><span class="tag">uniapp</span><span class="tag">uview</span><span class="tag">vue-cli</span><span class="tag">VueX</span><span class="tag">axios</span><span class="tag">avue</span><span class="tag">elmentui</span><span class="tag">qrcode.js</span></div>
+        </article>
       </div>
     </section>
 
-    <section class="panel resume-section" id="older-projects">
-      <h2 class="section-title">早期项目</h2>
+    <section class="section reveal" id="more">
+      <div class="section-title"><h2>更多项目</h2></div>
       <div class="timeline">
-        <article class="project"><div class="time">2022.08 - 2023.04</div><div><div class="item-head"><h3 class="item-title">希风-直订微信公众号管理系统</h3><span class="item-role">web前端</span></div><p>酒店管理综合项目的公众号管理系统，帮助商家管理自己的公众号。</p><p><span class="label">技术：</span>Vue CLI、Vuex、Element UI、vue-video-player、benz-amr-recorder。</p><p><span class="label">职责：</span>负责草稿箱、微信用户列表、用户标签、群发消息、公众号菜单等模块，并解决音视频在线播放问题。</p><p><span class="label">结果：</span>历时一个月上线，服务 2000+ 酒店。</p></div></article>
-        <article class="project"><div class="time">2019.10 - 2021.03</div><div><div class="item-head"><h3 class="item-title">海城源-保险后台管理系统</h3><span class="item-role">web前端</span></div><p>用于查看推广数据、配置推广渠道、分析导出数据和配置公众号的综合后台。</p><p><span class="label">技术：</span>Vue CLI、vue-router、Vuex、Element UI、axios。</p><p><span class="label">职责：</span>维护已有功能，新增研发页面，优化公共请求参数、表格数据处理方法和动态路由三级嵌套问题。</p><p><span class="label">结果：</span>管理数据 3 千万+。</p></div></article>
-        <article class="project"><div class="time">2019.09 - 2021.03</div><div><div class="item-head"><h3 class="item-title">海城源-保险公众号项目</h3><span class="item-role">web前端</span></div><p>保险公众号项目，涵盖赠险、付费险、养老社区等推广销售。</p><p><span class="label">技术：</span>HTML、CSS、JQuery、原生 JS、Swiper、微信 JS-SDK。</p><p><span class="label">职责：</span>从 0 参与项目，负责公众号菜单页面开发和维护，并参与公共 API 开发。</p><p><span class="label">结果：</span>服务用户 100w+，保单 500w 份+，养老社区预约 2w+。</p></div></article>
-        <article class="project"><div class="time">2019.04 - 2021.03</div><div><div class="item-head"><h3 class="item-title">海城源-保险推广销售 H5 项目</h3><span class="item-role">WEB前端</span></div><p>保险 H5 推广销售项目，投放在百度、支付宝、360、来推啊、怪兽充电等渠道。</p><p><span class="label">技术：</span>HTML、CSS、JQuery、JS、高德地图 API、Swiper、智齿客服。</p><p><span class="label">职责：</span>负责页面新增与维护、公共表单组件封装、动画开发、接口请求封装、适配、渠道 JS 对接和埋点部署。</p><p><span class="label">结果：</span>日均访问量 100w+，线上 bug 几乎为 0。</p></div></article>
-        <article class="project"><div class="time">2017.02 - 2018.12</div><div><div class="item-head"><h3 class="item-title">子希-网页推广项目</h3><span class="item-role">web前端</span></div><p>公司日常销售网页，投放在各大门户网站，也包含淘宝内置页面。</p><p><span class="label">技术：</span>HTML、CSS、JQuery、JS、Ajax。</p><p><span class="label">职责：</span>开发和维护页面样式布局与交互逻辑，配合后端调试支付、表单功能。</p><p><span class="label">结果：</span>月均销售额 100 多万。</p></div></article>
-        <article class="project"><div class="time">2016.12 - 2018.12</div><div><div class="item-head"><h3 class="item-title">子希-ERP管理系统</h3><span class="item-role">web前端</span></div><p>商品 ERP 管理系统，服务售前售后客服，包含商品录入、库存、仓库、人员、发货模板等。</p><p><span class="label">技术：</span>多页面开发、HTML、CSS、JQuery、JS、EasyUI。</p><p><span class="label">职责：</span>实习阶段维护已有页面，开发新页面样式，后期参与逻辑开发。</p><p><span class="label">结果：</span>公司内部使用，员工数量 60 多人。</p></div></article>
+        <article class="timeline-item"><div class="time">2023.01 - 2023.03</div><div><div class="item-head"><h3>直订微信公众号管理系统</h3><span class="position">北京希风开发科技有限公司</span></div><p class="desc">项目介绍：直订项目是一个酒店管理综合项目，酒店宣传、酒店预订、酒店商家管理后台系统，为了更好的为商家提供服务，所以有了这个微信公众号管理项目，主要目的是让商家更好的管理自己的公众号。</p><p class="desc">个人职责：负责部分功能模块：草稿箱、微信用户列表、用户标签、群发消息、公众号菜单等。</p><div class="tags"><span class="tag">vue-cli</span><span class="tag">vue-router</span><span class="tag">VueX</span><span class="tag">elmentui</span><span class="tag">vue-video-player</span><span class="tag">benz-amr-recorder</span></div></div></article>
+        <article class="timeline-item"><div class="time">2022.02 - 2022.11</div><div><div class="item-head"><h3>利省生活小程序</h3><span class="position">希风开发科技</span></div><p class="desc">项目介绍：公司推出的一款便民生活小程序，提供的服务项目包括：景区门票订购、景区周边酒店订购、小区物业模块（物业费、水电气缴纳）、各个购物平台福利购领券分佣功能、自营商品购买等功能。</p><p class="desc">个人职责：从0到1开发此项目，项目构建，接口封装，路由定义，功能组件封装。微信公众平台的小程序配置，微信小程序的体验版到正式版都是自己独立完成。</p><div class="tags"><span class="tag">微信原生小程序</span><span class="tag">Vant Weapp</span></div></div></article>
+        <article class="timeline-item"><div class="time">2019.09 - 2021.03</div><div><div class="item-head"><h3>保险公众号项目</h3><span class="position">海城源科技</span></div><p class="desc">项目介绍：公司主营的保险公众号，涵盖赠险、付费险、养老社区等推广销售，利用公司的H5、PC端页面进行推广引导关注公众号，再以公众号推文、服务等留住忠实用户。</p><p class="desc">个人职责：主要负责公众号菜单页面的新增开发和后续优化维护。</p><div class="tags"><span class="tag">HTML + CSS</span><span class="tag">JQuery</span><span class="tag">Sweiper</span><span class="tag">微信JS-SDK</span></div></div></article>
+        <article class="timeline-item"><div class="time">2019.04 - 2021.03</div><div><div class="item-head"><h3>保险推广销售H5项目</h3><span class="position">海城源科技</span></div><p class="desc">项目介绍：前后端不分离项目。公司推广销售的保险H5项目，主要有赠险、付费险、重疾险、意外险等。主要投放在百度、支付宝、360、来推啊、怪兽充电等渠道。</p><p class="desc">个人职责：负责页面的新增与维护，开发维护项目中公共表单组件的封装，页面动画的开发（JQuery动画，CSS3等），基于jQuery ajax的接口请求封装、页面的各端适配、渠道方JS对接、页面埋点部署等。</p><div class="tags"><span class="tag">HTML + CSS</span><span class="tag">JQuery</span><span class="tag">高德地图API</span><span class="tag">Swriper</span></div></div></article>
+        <article class="timeline-item"><div class="time">2016.12 - 2018.12</div><div><div class="item-head"><h3>ERP管理系统+网页推广项目</h3><span class="position">子希科技</span></div><p class="desc">项目介绍：商品ERP管理系统，公司售前售后人员客服使用。主要功能：商品录入、库存增减、仓库管理、人员管理、发货管理模板等。网页推广项目为公司日常销售网页，投放在各大门户网站。</p><p class="desc">个人职责：开发此项目的时候为前端实习生，主要负责维护已有页面，开发新页面的样式等。后期也参与项目的逻辑开发。</p><div class="tags"><span class="tag">前后端不分离</span><span class="tag">HTML + CSS</span><span class="tag">JQuery</span><span class="tag">EasyUI</span></div></div></article>
       </div>
     </section>
 
-    <section class="panel resume-section" id="education-skills">
-      <h2 class="section-title">教育背景与技能</h2>
-      <div class="timeline">
-        <article class="school"><div class="time">2012.09 - 2015.07</div><div><div class="item-head"><h3 class="item-title">上海电子信息职业技术学院</h3><span class="item-role">机电一体化（机器人应用）</span></div></div></article>
-        <article class="school"><div class="time">2019.12 - 2022.12</div><div><div class="item-head"><h3 class="item-title">湖南文理学院</h3><span class="item-role">物联网工程</span></div></div></article>
+    <section class="section reveal" id="personal">
+      <div class="section-title"><h2>个人项目</h2><span>微信机器人项目</span></div>
+      <div class="personal-grid">
+        <div>
+          <h3>2024.10 - 至今 / 微信机器人项目</h3>
+          <p class="desc">项目介绍：本项目主要为微信群聊里用的智能回复机器人。该项目分为微信机器人主体node接口+api项目+后台管理ui系统 + 游戏接口node项目。自己独立部署到云服务器，使用微信公众号推文，目前公众号粉丝900+。</p>
+          <p class="desc">个人职责：自己对接微信hook框架以及各种api接口，完善机器人的娱乐功能以及游戏战报功能。及时跟进游戏功能及时写入到机器人内。前期主要为node接口运行，后续的接口管理、用户数据管理主要是使用ai辅助完成的。</p>
+          <div class="tags"><span class="tag">node+express</span><span class="tag">sqlite3</span><span class="tag">vue2</span><span class="tag">elementui</span><span class="tag">云服务器部署</span></div>
+        </div>
+        <div class="data-card"><span class="data-number">900+</span><strong>公众号粉丝</strong><p>机器人与游戏接口主要使用node+express实现，后台管理项目为vue2+elementui。</p></div>
       </div>
-      <ul class="skills">
-        <li>HTML/CSS</li><li>JavaScript/ES6</li><li>Vue2</li><li>Vue3</li><li>uniapp</li><li>微信小程序</li><li>React</li><li>TypeScript</li><li>Node.js</li><li>ECharts</li><li>Element UI</li><li>Vant</li><li>uView</li><li>Webpack</li><li>AI 辅助开发</li>
-      </ul>
-      <p>熟练使用 HTML + CSS 布局，熟悉原生 JS、ES6、JQuery 和 DOM 操作；熟练使用 Vue2 全家桶、小程序开发和 uniapp 多平台框架；能够使用 ECharts 完成基础数据报表开发；对 webpack 打包构建有一定认识，能够从 0 到 1 搭建脚手架；了解 Node.js、TS，能够维护 TS/Vue3 项目。</p>
-      <p>工作积极主动，有条理性，适应能力强，具有责任心、独立工作能力和团队合作精神；关注前沿 AI 技术，能够使用 AI 辅助完成复杂的全栈设计。</p>
+    </section>
+
+    <section class="section reveal" id="education">
+      <div class="section-title"><h2>教育背景</h2><span>本科</span></div>
+      <div class="timeline">
+        <article class="timeline-item"><div class="time">2012.09 - 2016.06</div><div><div class="item-head"><h3>湖南文理学院</h3><span class="position">物联网工程</span></div></div></article>
+      </div>
     </section>
   </main>
 
-  <button class="back-top" type="button" aria-label="返回顶部"></button>
-  <nav class="page-rail" aria-label="简历章节导航">
-    <button class="page-dot" type="button" aria-label="个人信息" data-page="0"></button>
-    <button class="page-dot" type="button" aria-label="工作经验" data-page="1"></button>
-    <button class="page-dot" type="button" aria-label="近期项目" data-page="2"></button>
-    <button class="page-dot" type="button" aria-label="商城项目" data-page="3"></button>
-    <button class="page-dot" type="button" aria-label="早期项目" data-page="4"></button>
-    <button class="page-dot" type="button" aria-label="教育技能" data-page="5"></button>
+  <nav class="nav-rail" aria-label="章节导航">
+    <button class="nav-dot" type="button" data-target="top" aria-label="顶部"></button>
+    <button class="nav-dot" type="button" data-target="intro" aria-label="个人介绍"></button>
+    <button class="nav-dot" type="button" data-target="skills" aria-label="专业技能"></button>
+    <button class="nav-dot" type="button" data-target="work" aria-label="工作经验"></button>
+    <button class="nav-dot" type="button" data-target="projects" aria-label="项目经历"></button>
+    <button class="nav-dot" type="button" data-target="more" aria-label="更多项目"></button>
+    <button class="nav-dot" type="button" data-target="personal" aria-label="个人项目"></button>
+    <button class="nav-dot" type="button" data-target="education" aria-label="教育背景"></button>
   </nav>
+  <button class="back-top" type="button" aria-label="返回顶部"></button>
 
   <script>
     const progress = document.querySelector('.progress');
+    const sections = [...document.querySelectorAll('.reveal')];
+    const navTargets = [...document.querySelectorAll('[id]')].filter((el) => ['top','intro','skills','work','projects','more','personal','education'].includes(el.id));
+    const dots = [...document.querySelectorAll('.nav-dot')];
     const backTop = document.querySelector('.back-top');
-    const sections = document.querySelectorAll('.resume-section');
-    const dots = document.querySelectorAll('.page-dot');
 
-    const updateScrollState = () => {
-      const max = document.documentElement.scrollHeight - window.innerHeight;
-      const ratio = max > 0 ? window.scrollY / max : 0;
-      progress.style.transform = `scaleX(${Math.min(1, Math.max(0, ratio))})`;
-      backTop.classList.toggle('is-visible', window.scrollY > 500);
+    const updateScroll = () => {
+      const max = document.documentElement.scrollHeight - innerHeight;
+      progress.style.transform = `scaleX(${max > 0 ? scrollY / max : 0})`;
+      backTop.classList.toggle('is-visible', scrollY > 600);
 
-      let activeIndex = 0;
-      let nearestDistance = Number.POSITIVE_INFINITY;
-      sections.forEach((section, index) => {
-        const rect = section.getBoundingClientRect();
-        const distance = Math.abs(rect.top - window.innerHeight * 0.18);
-        if (distance < nearestDistance) {
-          nearestDistance = distance;
-          activeIndex = index;
+      let active = 0;
+      let nearest = Infinity;
+      navTargets.forEach((section, index) => {
+        const distance = Math.abs(section.getBoundingClientRect().top - innerHeight * .18);
+        if (distance < nearest) {
+          nearest = distance;
+          active = index;
         }
       });
-      sections.forEach((section, index) => section.classList.toggle('is-active', index === activeIndex));
-      dots.forEach((dot, index) => dot.classList.toggle('is-active', index === activeIndex));
+      navTargets.forEach((section, index) => section.classList.toggle('is-active', index === active));
+      dots.forEach((dot, index) => dot.classList.toggle('is-active', index === active));
     };
 
     if ('IntersectionObserver' in window) {
@@ -481,7 +721,7 @@
             observer.unobserve(entry.target);
           }
         });
-      }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
+      }, { threshold: .08, rootMargin: '0px 0px -12% 0px' });
       sections.forEach((section) => observer.observe(section));
     } else {
       sections.forEach((section) => section.classList.add('is-visible'));
@@ -489,15 +729,14 @@
 
     dots.forEach((dot) => {
       dot.addEventListener('click', () => {
-        const section = sections[Number(dot.dataset.page)];
-        if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        document.getElementById(dot.dataset.target)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     });
 
-    backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-    window.addEventListener('scroll', updateScrollState, { passive: true });
-    window.addEventListener('resize', updateScrollState);
-    updateScrollState();
+    backTop.addEventListener('click', () => scrollTo({ top: 0, behavior: 'smooth' }));
+    addEventListener('scroll', updateScroll, { passive: true });
+    addEventListener('resize', updateScroll);
+    updateScroll();
   </script>
 </body>
 </html>
